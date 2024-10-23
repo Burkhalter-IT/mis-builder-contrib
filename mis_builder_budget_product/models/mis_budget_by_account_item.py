@@ -5,7 +5,6 @@ from odoo.osv import expression
 
 
 class MisBudgetByAccountItem(models.Model):
-
     _inherit = "mis.budget.by.account.item"
     _order = "budget_id, date_from, account_id, product_id"
 
@@ -21,8 +20,8 @@ class MisBudgetByAccountItem(models.Model):
         # the product of the other line), they are overlapping.
         domain = super()._prepare_overlap_domain()
         if self.product_id:
-            # If the current line has a product, we have overlapping for another line with
-            # the same product or an empty one
+            # If the current line has a product, we have overlapping for another line
+            # with the same product or an empty one
             domain = expression.AND(
                 [
                     domain,
